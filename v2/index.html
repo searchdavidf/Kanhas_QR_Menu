@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanha's Veg Restaurant</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Brand Identity Palette Matching Logo */
+            --bg-night-blue: #000B30;     /* Signature deep night blue background */
+            --gold-brand: #FFD000;        /* Exact vivid golden yellow from logo */
+            --card-navy: #0A1640;         /* Slightly lighter crisp navy for container surfaces */
+            --text-light: #FFFFFF;        /* Crisp white readable header/text */
+            --text-muted: #A0AEC0;        /* Soft slate/grey for descriptors */
+            
+            /* Third-Party Services Colors */
+            --talabat: #FF5E00;
+            --deliveroo: #00CDBC;
+            --whatsapp: #25D366;
+            --instagram: #E1306C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-night-blue);
+            color: var(--text-light);
+            line-height: 1.5;
+            padding-bottom: 40px;
+        }
+
+        /* --- HERO REGION --- */
+        .hero-section {
+            position: relative;
+            background-image: linear-gradient(to bottom, rgba(0, 11, 48, 0.75), rgba(0, 11, 48, 0.9)), url('image_89dff7.jpg');
+            background-size: cover;
+            background-position: center 35%;
+            width: 100%;
+            padding: 28px 16px 40px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 208, 0, 0.2);
+        }
+
+        /* Frosted Brand Header Box */
+        .frosted-brand-box {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(10, 22, 64, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 208, 0, 0.25);
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .logo-img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .brand-titles {
+            text-align: left;
+        }
+
+        .brand-name {
+            font-family: 'Fraunces', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--gold-brand);
+            line-height: 1.1;
+        }
+
+        .brand-tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            opacity: 0.9;
+        }
+
+        /* Status Pills */
+        .status-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 11, 48, 0.6);
+            border: 1px solid rgba(255, 208, 0, 0.4);
+            padding: 6px 16px;
+            border-radius: 100px;
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #EF4444; /* Default Red for Closed */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #EF4444;
+        }
+        
+        .status-dot.open {
+            background-color: #22C55E; /* Vibrant dynamic Green when Open */
+            box-shadow: 0 0 8px #22C55E;
+        }
+
+        .status-text {
+            color: #FFFFFF;
+        }
+        
+        .status-text.open-text {
+            color: var(--gold-brand);
+        }
+
+        .status-divider {
+            width: 1px;
+            height: 14px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Quick Info Text Over Hero */
+        .hero-meta-text {
+            color: #FFFFFF;
+            font-size: 0.88rem;
+            font-weight: 500;
+            max-width: 380px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            margin-bottom: 24px;
+            line-height: 1.45;
+        }
+
+        /* Primary Menu Action Button */
+        .menu-cta-btn {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--gold-brand);
+            color: var(--bg-night-blue);
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(255, 208, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-cta-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 208, 0, 0.4);
+        }
+
+        .menu-cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- CONTAINER CONTROL --- */
+        .layout-body {
+            max-width: 440px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        .group-section {
+            margin-bottom: 28px;
+        }
+
+        .group-heading {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--gold-brand);
+            margin-bottom: 12px;
+        }
+
+        /* --- GRID SYSTEMS --- */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        /* Card Blueprint Components */
+        .ui-card {
+            background-color: var(--card-navy);
+            border-radius: 14px;
+            padding: 16px 14px;
+            text-decoration: none;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .ui-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 208, 0, 0.1);
+            background-color: #0E1E54;
+        }
+
+        .ui-card:active {
+            background-color: #0A1640;
+            transform: translateY(0);
+        }
+
+        .card-icon-large {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .card-label-main {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .card-subtext {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        /* Delivery Brand Specific Layout tweaks */
+        .delivery-card {
+            padding: 18px 14px;
+            flex-direction: row;
+            justify-content: flex-start;
+            text-align: left;
+            gap: 14px;
+        }
+
+        .delivery-icon-frame {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .delivery-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .delivery-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .delivery-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- REVIEWS LAYOUT SYSTEM --- */
+        .reviews-slider-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slider-arrow {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--card-navy);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .reviews-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .review-card {
+            background-color: var(--card-navy);
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 135px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .review-stars {
+            color: var(--gold-brand);
+            font-size: 0.65rem;
+            display: flex;
+            gap: 1px;
+        }
+
+        .google-icon-brand {
+            width: 36px;
+            height: 14px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .review-snippet-text {
+            font-size: 0.76rem;
+            color: #E2E8F0;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .reviewer-profile-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 6px;
+        }
+
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .avatar-dot-img {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #4A5568;
+        }
+
+        .profile-name-text {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .verified-pill-text {
+            color: #63B3ED;
+            font-size: 0.68rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* Review Submission Button styling */
+        .secondary-action-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .review-submit-btn {
+            background-color: var(--gold-brand);
+            color: var(--bg-night-blue);
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO BACKGROUND CONTEXT WITH ACCENT CONFIGURATIONS -->
+    <div class="hero-section">
+        <div class="frosted-brand-box">
+            <img class="logo-img" src="logo.png" alt="Kanha's Veg Restaurant Logo">
+            <div class="brand-titles">
+                <h1 class="brand-name">Kanha's</h1>
+                <p class="brand-tagline">Veg Restaurant</p>
+            </div>
+        </div>
+
+        <!-- RECONFIGURED DYNAMIC PILL DOM HOOKS -->
+        <div class="status-container">
+            <div id="store-dot" class="status-dot"></div>
+            <span id="store-text" class="status-text">Store Status: LOADING...</span>
+            <div class="status-divider"></div>
+            <span>07:00 - 23:30</span>
+        </div>
+
+        <p class="hero-meta-text">
+            Musaffah, Shabiya 10 - Opposite Hypermarket, Abu Dhabi<br>
+            We serve fasting food on request
+        </p>
+
+        <a href="menu.html" class="menu-cta-btn">
+            <i class="fa-solid fa-book-open"></i> Browse Full Menu
+        </a>
+    </div>
+
+    <!-- MAIN BODY GRID LAYOUT -->
+    <div class="layout-body">
+
+        <!-- CONNECT WITH US -->
+        <section class="group-section">
+            <h2 class="group-heading">Connect With Us</h2>
+            <div class="grid-2-col">
+                <a href="https://www.instagram.com/kanhas_veg" target="_blank" class="ui-card">
+                    <i class="fa-brands fa-instagram card-icon-large" style="color: var(--instagram);"></i>
+                    <span class="card-label-main">Instagram</span>
+                    <span class="card-subtext">@kanhas_veg</span>
+                </a>
+                <a href="http://kanhasrestaurant.com/" target="_blank" class="ui-card">
+                    <i class="fa-solid fa-globe card-icon-large" style="color: var(--gold-brand);"></i>
+                    <span class="card-label-main">Website</span>
+                    <span class="card-subtext">kanhasrestaurant.com</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTACT & DIRECTIONS -->
+        <section class="group-section">
+            <h2 class="group-heading">Contact & Directions</h2>
+            <div class="grid-3-col">
+                <a href="tel:023094707" class="ui-card">
+                    <i class="fa-solid fa-phone card-icon-large" style="color: #63B3ED;"></i>
+                    <span class="card-label-main">Call</span>
+                    <span class="card-subtext">02 309 4707</span>
+                </a>
+                <a href="https://wa.me/971505745808" target="_blank" class="ui-card">
+                    <i class="fa-brands fa-whatsapp card-icon-large" style="color: var(--whatsapp);"></i>
+                    <span class="card-label-main">WhatsApp</span>
+                    <span class="card-subtext">+971 50</span>
+                </a>
+                <a href="https://maps.app.goo.gl/3oLBVa3G7eKP9dJn9" target="_blank" class="ui-card">
+                    <i class="fa-solid fa-location-dot card-icon-large" style="color: #EF4444;"></i>
+                    <span class="card-label-main">Map</span>
+                    <span class="card-subtext">Shabiya 10</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ORDER DELIVERY LINKS -->
+        <section class="group-section">
+            <h2 class="group-heading">Order Delivery</h2>
+            <div class="grid-2-col">
+                <!-- Talabat -->
+                <a href="https://www.talabat.com/uae" target="_blank" class="ui-card delivery-card">
+                    <div class="delivery-icon-frame" style="background: rgba(255, 94, 0, 0.15);">
+                        <i class="fa-solid fa-motorcycle" style="color: var(--talabat);"></i>
+                    </div>
+                    <div class="delivery-meta">
+                        <span class="delivery-title">Talabat</span>
+                        <span class="delivery-desc">Order website</span>
+                    </div>
+                </a>
+                <!-- Noon Food -->
+                <a href="https://food.noon.com/" target="_blank" class="ui-card delivery-card">
+                    <div class="delivery-icon-frame" style="background: rgba(255, 208, 0, 0.15);">
+                        <i class="fa-solid fa-bag-shopping" style="color: var(--gold-brand);"></i>
+                    </div>
+                    <div class="delivery-meta">
+                        <span class="delivery-title">Noon Food</span>
+                        <span class="delivery-desc">Order website</span>
+                    </div>
+                </a>
+                <!-- Deliveroo -->
+                <a href="https://deliveroo.ae/" target="_blank" class="ui-card delivery-card" style="grid-column: span 2;">
+                    <div class="delivery-icon-frame" style="background: rgba(0, 205, 188, 0.15);">
+                        <i class="fa-solid fa-basket-shopping" style="color: var(--deliveroo);"></i>
+                    </div>
+                    <div class="delivery-meta">
+                        <span class="delivery-title">Deliveroo</span>
+                        <span class="delivery-desc">Order website platform</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- VERIFIED TESTIMONIAL SLIDER -->
+        <section class="group-section">
+            <h2 class="group-heading">What Our Customers Are Saying</h2>
+            
+            <div class="reviews-slider-box">
+                <div class="slider-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+                
+                <div class="reviews-wrapper">
+                    <div class="review-card">
+                        <div>
+                            <div class="review-header">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <img class="google-icon-brand" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 15'><text x='0' y='12' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='11'>Google</text></svg>" alt="Google">
+                            </div>
+                            <p class="review-snippet-text">Dal Bati combo is truly authentic in taste. Must visit Rajasthani restaurant. Highly recommend.</p>
+                        </div>
+                        <div class="reviewer-profile-row">
+                            <div class="profile-left">
+                                <div class="avatar-dot-img"></div>
+                                <span class="profile-name-text">Customer</span>
+                            </div>
+                            <span class="verified-pill-text"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div>
+                            <div class="review-header">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <img class="google-icon-brand" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 15'><text x='0' y='12' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='11'>Google</text></svg>" alt="Google">
+                            </div>
+                            <p class="review-snippet-text">They are very good! Authentic Indian flavors at places; rod on authentic maltina, and cloating.</p>
+                        </div>
+                        <div class="reviewer-profile-row">
+                            <div class="profile-left">
+                                <div class="avatar-dot-img"></div>
+                                <span class="profile-name-text">Sharhawa</span>
+                            </div>
+                            <span class="verified-pill-text"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="secondary-action-container">
+                <a href="https://g.page/r/CWvYuld3-ofTEAI/review" target="_blank" class="review-submit-btn">Leave a review</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- AUTOMATIC LIVE STATUS LOGIC SWITCH -->
+    <script>
+        function checkRestaurantStatus() {
+            const now = new Date();
+            
+            // Calculate total minutes passed from midnight to match timing parameters easily
+            const currentMinutes = (now.getHours() * 60) + now.getMinutes();
+            
+            const openMinutes = (7 * 60) + 0;      // 07:00 AM
+            const closeMinutes = (23 * 60) + 30;   // 23:30 PM (11:30 PM)
+
+            const dotEl = document.getElementById('store-dot');
+            const textEl = document.getElementById('store-text');
+
+            if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
+                // Restaurant is Open
+                dotEl.classList.add('open');
+                textEl.innerText = "Store Status: OPEN";
+                textEl.classList.add('open-text');
+            } else {
+                // Restaurant is Closed
+                dotEl.classList.remove('open');
+                textEl.innerText = "Store Status: CLOSED";
+                textEl.classList.remove('open-text');
+            }
+        }
+
+        // Run instantly on load
+        checkRestaurantStatus();
+        // Check every 30 seconds to keep accuracy updated if user remains on page
+        setInterval(checkRestaurantStatus, 30000);
+    </script>
+</body>
+</html>
