@@ -5,7 +5,7 @@
  */
 window.KANHA_CONFIG = {
   // WhatsApp number the order text is sent to, digits only (country code, no + or leading 00)
-  whatsappNumber: "971505745808",
+  whatsappNumber: "971562293410",
 
   // Restaurant display name, used in the pre-filled WhatsApp message header
   restaurantName: "Kanha's Veg Restaurant",
