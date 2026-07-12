@@ -341,7 +341,7 @@
     const btn = drawerEl.querySelector(".drawer-primary-btn");
     const errorEl = drawerEl.querySelector(".drawer-review-error");
     btn.disabled = true;
-    btn.textContent = "Sending order…";
+    btn.textContent = "Preparing order…";
     if (errorEl) errorEl.hidden = true;
 
     const result = await Api.sendOrder(snapshot, customer);
@@ -358,10 +358,12 @@
 
     // Success: window.location.href to wa.me has already been triggered inside
     // Api.sendOrder. Record the cooldown, clear the cart, and reset the UI —
-    // by the time the customer returns to the tab, WhatsApp has the message.
+    // by the time the customer returns to the tab, WhatsApp has the message
+    // pre-filled. NOTE: this is not yet "sent" — the customer still has to
+    // tap Send inside WhatsApp, so the toast must not claim it's done.
     try { localStorage.setItem(CFG.storageKeys.lastOrderAt, String(Date.now())); } catch (e) {}
     Cart.clearCart();
-    showToast(result.isFallback ? "Order sent — we'll confirm shortly" : "Order sent to WhatsApp ✓");
+    showToast("Opening WhatsApp — tap Send to confirm");
     closeDrawer();
     goToStep(1);
   }
