@@ -62,13 +62,16 @@ window.KanhaApi = (function () {
   // Notes: ...
   //
   // Thank you.
+  // Note: isFallbackId is intentionally not used to alter the customer-facing
+  // text anymore — that distinction is staff-internal, not something a
+  // customer needs to see. Kept as a parameter in case a future staff-only
+  // notification channel wants it.
   function buildOrderText(cart, customer, orderId, isFallbackId) {
     const DIVIDER = "-------------------------";
     const lines = [];
 
-    lines.push(`🍽️ *${CFG.restaurantName}*`);
+    lines.push(`\u{1F37D}\uFE0F *${CFG.restaurantName}*`);
     lines.push(`Order ID : ${orderId}`);
-    if (isFallbackId) lines.push(`⚠️ Not yet logged — please confirm manually`);
     lines.push("");
 
     lines.push("Customer");
@@ -90,6 +93,12 @@ window.KanhaApi = (function () {
 
     lines.push(`Total : ${CFG.currency} ${cart.total.toFixed(0)}`);
     if (customer && customer.notes) lines.push(`Notes: ${customer.notes}`);
+    lines.push("");
+    // Every order currently needs a human to confirm it and the pickup/delivery
+    // time back to the customer (n8n auto-confirmation isn't wired up yet).
+    // This note is customer-facing, so it stays friendly — no mention of
+    // logging, fallback IDs, or anything backend-related.
+    lines.push("We'll confirm your order and timing shortly.");
     lines.push("");
     lines.push("Thank you.");
 
@@ -204,9 +213,8 @@ window.KanhaApi = (function () {
     if (window.KanhaValidate && window.KanhaValidate.isMessageTooLong(encoded)) {
       const itemCount = cart.items.reduce((n, i) => n + i.qty, 0);
       const lines = [];
-      lines.push(`🍽️ *${CFG.restaurantName}*`);
+      lines.push(`\u{1F37D}\uFE0F *${CFG.restaurantName}*`);
       lines.push(`Order ID : ${result.orderId}`);
-      if (result.isFallback) lines.push(`⚠️ Not yet logged — please confirm manually`);
       lines.push("");
       if (customer && customer.name) lines.push(`Name : ${customer.name}`);
       lines.push(`Order Type`);
@@ -215,6 +223,8 @@ window.KanhaApi = (function () {
       lines.push(`${itemCount} items — large order, see call/notes for full list`);
       lines.push("-------------------------");
       lines.push(`Total : ${CFG.currency} ${cart.total.toFixed(0)}`);
+      lines.push("");
+      lines.push("We'll confirm your order and timing shortly.");
       lines.push("");
       lines.push("Thank you.");
       finalText = lines.join("\n");
