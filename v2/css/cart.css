@@ -85,7 +85,11 @@
   color:var(--navy);
   border:none;
   border-radius:10px;
-  padding:0 16px;
+  /* .action-btn (Call/WhatsApp) uses padding:12px 0 for its height — this bar
+     only had horizontal padding, so it collapsed down to the text's line-height
+     alone and looked thin next to those buttons. Matching that vertical padding
+     here so both controls are the same height in the action bar. */
+  padding:12px 16px;
   font-size:13.5px;
   font-weight:700;
 }
