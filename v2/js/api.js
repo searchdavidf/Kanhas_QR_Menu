@@ -66,45 +66,45 @@ window.KanhaApi = (function () {
   // text anymore — that distinction is staff-internal, not something a
   // customer needs to see. Kept as a parameter in case a future staff-only
   // notification channel wants it.
-  function buildOrderText(cart, customer, orderId, isFallbackId) {
-    const DIVIDER = "-------------------------";
-    const lines = [];
+  function buildOrderText(cart, customer, orderId) {
+  const lines = [];
 
-    lines.push(`\u{1F37D}\uFE0F *${CFG.restaurantName}*`);
-    lines.push(`Order ID : ${orderId}`);
-    lines.push("");
+  lines.push("🍽️ *Kanha's Veg Restaurant*");
+  lines.push("");
+  lines.push("✅ *Order Confirmation*");
+  lines.push("");
+  lines.push(`🆔 Order ID: ${orderId}`);
+  lines.push("");
+  lines.push(`👤 Customer: ${(customer?.name) || "-"}`);
+  lines.push(`📞 Phone: ${(customer?.phone) || "-"}`);
+  lines.push(`🚶 Order Type: ${(customer?.fulfillment) || "Pickup"}`);
 
-    lines.push("Customer");
-    lines.push(`Name : ${(customer && customer.name) || "-"}`);
-    lines.push(`Phone : ${(customer && customer.phone) || "-"}`);
-    lines.push("");
-
-    lines.push("Order Type");
-    lines.push(`${(customer && customer.fulfillment) || "Pickup"}`);
-    if (customer && customer.fulfillment === "Delivery" && customer.address) {
-      lines.push(`Address : ${customer.address}`);
-    }
-
-    lines.push(DIVIDER);
-    cart.items.forEach(item => {
-      lines.push(`${item.qty} \u00d7 ${item.name}`);
-    });
-    lines.push(DIVIDER);
-
-    lines.push(`Total : ${CFG.currency} ${cart.total.toFixed(0)}`);
-    if (customer && customer.notes) lines.push(`Notes: ${customer.notes}`);
-    lines.push("");
-    // Every order currently needs a human to confirm it and the pickup/delivery
-    // time back to the customer (n8n auto-confirmation isn't wired up yet).
-    // This note is customer-facing, so it stays friendly — no mention of
-    // logging, fallback IDs, or anything backend-related.
-    lines.push("We'll confirm your order and timing shortly.");
-    lines.push("");
-    lines.push("Thank you.");
-
-    return lines.join("\n");
+  if (customer?.fulfillment === "Delivery" && customer?.address) {
+    lines.push(`📍 Address: ${customer.address}`);
   }
 
+  lines.push("");
+  lines.push("🛒 *Items*");
+
+  cart.items.forEach(item => {
+    lines.push(`• ${item.qty} × ${item.name}`);
+  });
+
+  lines.push("");
+  lines.push(`💰 *Total:* ${CFG.currency} ${cart.total.toFixed(0)}`);
+
+  if (customer?.notes) {
+    lines.push("");
+    lines.push(`📝 Notes: ${customer.notes}`);
+  }
+
+  lines.push("");
+  lines.push("Thank you for your order! 😊");
+  lines.push("We'll confirm your pickup/delivery time shortly.");
+  lines.push("If you have any questions, simply reply to this chat.");
+
+  return lines.join("\n");
+}
   function buildWhatsAppUrl(text) {
     return `https://wa.me/${CFG.whatsappNumber}?text=${encodeURIComponent(text)}`;
   }
