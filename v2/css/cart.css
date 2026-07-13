@@ -16,15 +16,15 @@
   font-family:'Inter', sans-serif;
   font-size:12px;
   font-weight:700;
-  color:var(--gold);
-  background:rgba(240,196,25,0.1);
-  border:1px solid rgba(240,196,25,0.35);
+  color:var(--navy);
+  background:var(--gold);
+  border:1px solid var(--gold);
   border-radius:8px;
   padding:6px 12px;
   white-space:nowrap;
   transition:transform 0.12s, background 0.15s;
 }
-.add-btn:active{ transform:scale(0.94); background:rgba(240,196,25,0.2); }
+.add-btn:active{ transform:scale(0.94); background:var(--gold-deep); border-color:var(--gold-deep); }
 
 .stepper{
   display:flex;
