@@ -99,7 +99,7 @@ window.KanhaApi = (function () {
   }
 
   lines.push("");
-  lines.push("Plesae update my (`Order Type`) Time! 😊");
+  lines.push("Plesae update my Deliver/Pickup Time! 😊");
 
   return lines.join("\n");
 }
