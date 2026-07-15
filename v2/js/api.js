@@ -99,9 +99,7 @@ window.KanhaApi = (function () {
   }
 
   lines.push("");
-  lines.push("Thank you for your order! 😊");
-  lines.push("We'll confirm your pickup/delivery time shortly.");
-  lines.push("If you have any questions, simply reply to this chat.");
+  lines.push("Plesae update my (`Order Type`) Time! 😊");
 
   return lines.join("\n");
 }
