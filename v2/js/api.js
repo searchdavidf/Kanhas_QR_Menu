@@ -224,9 +224,7 @@ window.KanhaApi = (function () {
       lines.push("-------------------------");
       lines.push(`Total : ${CFG.currency} ${cart.total.toFixed(0)}`);
       lines.push("");
-      lines.push("We'll confirm your order and timing shortly.");
-      lines.push("");
-      lines.push("Thank you.");
+      lines.push("This is my order, please confirm my (`Order Type`).");
       finalText = lines.join("\n");
     }
 
